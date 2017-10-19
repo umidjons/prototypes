@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Posting an offer</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Open%20Sans">
+</head>
+<body>
+  <form>
+    <h2 class="form-caption">Posting a new offer</h2>
+
+    <label class="form-label" for="category">Category</label>
+    <select id="category" class="form-control">
+      <option value="1">Design</option>
+      <option value="2">Software Development</option>
+      <option value="3">Writing</option>
+      <option value="4">Translation</option>
+    </select>
+
+    <label for="task" class="form-label">Task</label>
+    <textarea id="task" class="form-control" cols="30" rows="10"></textarea>
+
+    <label for="expires" class="form-label">Expires at</label>
+    <input id="expires" class="form-control" type="date">
+
+    <label class="form-label" for="budget">Budget</label>
+    <input id="budget" class="form-control" type="number">
+
+    <label class="form-label" for="tags">Tags</label>
+    <p class="form-control form-control-static">
+      <span class="tag">JavaScript</span>
+      <span class="tag">TypeScript</span>
+      <span class="tag">Node.js</span>
+    </p>
+
+    <div class="btn-container">
+      <button class="btn btn-warning">Cancel</button>
+      <button class="btn btn-primary">Submit</button>
+    </div>
+  </form>
+</body>
+</html>

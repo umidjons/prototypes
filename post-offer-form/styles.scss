@@ -1,0 +1,86 @@
+@import 'mixins';
+
+$color_background: #f6f9e1;
+$color_form_bg: #444054;
+$color_form: #edf7b5;
+$color_form_line: #f1ab86;
+$color_form_label_bg: #ee7674;
+$color_form_control_bg: white;
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: $color_background;
+  font-family: "Open Sans";
+}
+
+form {
+  max-width: 600px;
+  margin: 40px auto;
+  background: $color_form_bg;
+  color: $color_form;
+  padding: 20px;
+}
+
+.form-caption {
+  padding: 15px 20px;
+  text-align: center;
+  border-bottom: 1px solid $color_form_line;
+  font-weight: normal;
+}
+
+.form-label {
+  display: block;
+  padding: 15px;
+  background: $color_form_label_bg;
+  color: $color_background;
+}
+
+.form-control {
+  display: block;
+  width: 100%;
+  border: none;
+  padding: 15px;
+  box-sizing: border-box;
+  font-size: 14px;
+  background: $color_form_control_bg;
+  color: $color_form_bg;
+  outline: none;
+  resize: none;
+}
+
+.form-control-static {
+  margin: 0;
+}
+
+.tag {
+  background: #d3ff8e;
+  padding: 5px 10px;
+  &:after {
+    content: '\2716';
+    padding-left: 5px;
+    color: $color_form_label_bg;
+  }
+}
+
+.btn-container {
+	margin: 20px 0;
+  text-align: center;
+}
+
+.btn {
+  padding: 10px 20px;
+  border: none;
+  font-size: 14px;
+  color: $color_form_bg;
+  cursor: pointer;
+  @include hoverize(white);
+}
+
+.btn-primary {
+  @include hoverize($color_form_line);
+}
+

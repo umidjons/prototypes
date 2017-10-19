@@ -1,0 +1,6 @@
+@mixin hoverize($bgColor) {
+  background-color: $bgColor;
+  &:hover {
+    background-color: darken($bgColor, 10%);
+  }
+}
