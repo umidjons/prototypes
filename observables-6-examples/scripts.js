@@ -1,32 +1,35 @@
 'use strict';
 
-const button = document.querySelector('button');
+const input = document.querySelector('input');
+const select = document.querySelector('select');
 const output = document.querySelector('output');
 
+const id$ = Rx.Observable.fromEvent(input, 'input').map(e => e.target.value).distinctUntilChanged().debounceTime(200);
+const select$ = Rx.Observable.fromEvent(select, 'change').map(e => e.target.value);
+
 Rx.Observable
-  .fromEvent(button, 'click')
-  .switchMap(getAlbums)
-  .map(response => response.response)
+  .combineLatest(id$, select$)
+  .switchMap(getResources)
+  .map(resp => resp.response)
   .subscribe(render, handleError);
 
-function getAlbums() {
-  const userId = Math.round(Math.random() * 10);
-  return Rx.Observable.ajax(`https://jsonplaceholder.typicode.com/albums?userId=${userId}`);
+function getResources([id, resource]) {
+  return Rx.Observable.ajax(`https://jsonplaceholder.typicode.com/${resource}?userId=${id}`);
 }
 
 function handleError(err) {
   console.error(err);
 }
 
-function render(albums) {
+function render(items) {
   output.innerHTML = '';
-  for(let album of albums){
+  for(let item of items){
     const h1 = document.createElement('h1');
-    h1.innerHTML = album.title;
+    h1.innerHTML = item.title;
     output.appendChild(h1);
 
     const p = document.createElement('p');
-    p.innerHTML = `id: ${album.id} userId: ${album.userId}`;
+    p.innerHTML = `id: ${item.id} userId: ${item.userId}`;
     output.appendChild(p);
   }
 }
