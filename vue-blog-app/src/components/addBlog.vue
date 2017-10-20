@@ -59,7 +59,7 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
       blog: {
         title: '',
@@ -72,14 +72,14 @@ export default {
     }
   },
   methods: {
-    addPost: function() {
+    addPost: function () {
       this.$http.post('http://jsonplaceholder.typicode.com/posts', {
         title: this.blog.title,
         body: this.blog.content,
         userId: 1
-      }).then(function(data){
-        console.log(data);
-        this.submitted = true;
+      }).then(function (data) {
+        console.log(data)
+        this.submitted = true
       })
     }
   }

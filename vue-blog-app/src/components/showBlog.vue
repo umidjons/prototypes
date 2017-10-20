@@ -11,13 +11,13 @@
 
 <script>
 export default {
-  data() {
+  data () {
     return {
       blogs: []
     }
   },
   methods: {},
-  created() {
+  created () {
     this.$http.get('http://jsonplaceholder.typicode.com/posts')
       .then(data => { this.blogs = data.body.slice(0, 10) })
   }
