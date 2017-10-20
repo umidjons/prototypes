@@ -5,7 +5,7 @@ const output = document.querySelector('output');
 
 Rx.Observable
   .fromEvent(button, 'click')
-  .flatMap(getAlbums)
+  .switchMap(getAlbums)
   .map(response => response.response)
   .subscribe(render, handleError);
 
