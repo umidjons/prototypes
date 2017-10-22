@@ -36,7 +36,7 @@ const Rec = {
     if (this.mic.enabled) {
       this.recorder.record(this.soundFile);
       this.state = true;
-      this.ui.btnToggle.textContent = 'Stop';
+      this.ui.btnToggle.innerHTML = '<i class="fa fa-fw fa-stop"></i> Stop';
     } else {
       console.log('Mic is not enabled.');
     }
@@ -45,20 +45,20 @@ const Rec = {
   stop() {
     this.recorder.stop();
     this.state = false;
-    this.ui.btnToggle.textContent = 'Start';
+    this.ui.btnToggle.innerHTML = '<i class="fa fa-fw fa-microphone"></i> Start';
   },
 
   play() {
     if (!this.playing) {
       this.soundFile.onended(() => {
         this.playing = false;
-        this.ui.btnPlay.textContent = 'Play';
+        this.ui.btnPlay.innerHTML = '<i class="fa fa-fw fa-play"></i> Play';
         console.log('Finished');
       });
 
       this.soundFile.play();
       this.playing = true;
-      this.ui.btnPlay.textContent = 'Abort';
+      this.ui.btnPlay.innerHTML = '<i class="fa fa-fw fa-stop"></i> Stop';
     } else {
       this.soundFile.stop();
     }
