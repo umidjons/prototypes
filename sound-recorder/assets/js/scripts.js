@@ -3,10 +3,12 @@ const Rec = {
   init() {
     this.state = false;
     this.playing = false;
+    this.files = [];
 
     this.ui = {
       btnToggle: document.getElementById('btn-toggle'),
-      btnPlay: document.getElementById('btn-play')
+      btnPlay: document.getElementById('btn-play'),
+      audioList: document.getElementById('audio-list')
     };
 
     this.initRecorder();
@@ -32,6 +34,7 @@ const Rec = {
 
   start() {
     this.soundFile = new p5.SoundFile();
+    this.soundFile.fileName = 'Audio-' + this.files.length + '.wav';
 
     if (this.mic.enabled) {
       this.recorder.record(this.soundFile);
@@ -46,6 +49,7 @@ const Rec = {
     this.recorder.stop();
     this.state = false;
     this.ui.btnToggle.innerHTML = '<i class="fa fa-fw fa-microphone"></i> Start';
+    this.addFile();
   },
 
   play() {
@@ -62,6 +66,14 @@ const Rec = {
     } else {
       this.soundFile.stop();
     }
+  },
+
+  addFile() {
+    this.files.push(this.soundFile);
+
+    let item = document.createElement('li');
+    item.innerHTML = this.soundFile.fileName;
+    this.ui.audioList.appendChild(item);
   }
 };
 
